@@ -9,19 +9,17 @@ export default function Page() {
         <div className="mt-6 flex flex-wrap gap-3">
           <a href="/escuela" className="btn">Ver cursos</a>
           <a href="/marketplace" className="btn">Reservar lectura</a>
-          <a href="/club" className="btn" style={{background:'#D4AF37',color:'#0B0B0F',fontWeight:800}}>Unirme al Club</a>
+          <a href="/club" className="btn" style={{background:'#D4AF37', color:'#0B0B0F', fontWeight:800}}>Unirme al Club</a>
         </div>
-        <p className="mt-4 text-xs text-zinc-400">Este starter incluye Mercado Pago + Zoom (handlers de API) listos para conectar.</p>
       </div>
       <div className="card">
-        <div className="text-sm text-zinc-300">Checklist de producción</div>
+        <div className="text-sm text-zinc-300">Demo lista para producción</div>
         <ul className="mt-2 space-y-1 text-sm text-zinc-200 list-disc ml-5">
-          <li>Conecta claves de Mercado Pago y Zoom en <code>.env</code></li>
-          <li>Configura webhooks en Mercado Pago → URL: <code>/api/payments/mp/webhook</code></li>
-          <li>Sube a Vercel y apunta tu dominio</li>
-          <li>Configura Postgres y Prisma (opcional en esta demo)</li>
+          <li>Next.js 14 + Tailwind</li>
+          <li>Rutas de API para Mercado Pago y Zoom</li>
+          <li>Listo para conectar tu dominio</li>
         </ul>
       </div>
     </section>
-  )
+  );
 }
