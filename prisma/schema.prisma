@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String  @id @default(cuid())
+  email     String  @unique
+  name      String?
+  role      String  @default("consultante") // consultante | alumno | lector | admin
+  createdAt DateTime @default(now())
+  Reader    ReaderProfile?
+}
+
+model ReaderProfile {
+  id        String  @id @default(cuid())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String  @unique
+  rate40    Int
+  rate60    Int
+  languages String  // csv: es,en,pt
+  skills    String  // csv
+  rating    Float   @default(5.0)
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  clientId  String
+  readerId  String
+  startUTC  DateTime
+  endUTC    DateTime
+  duration  Int
+  price     Int
+  currency  String
+  status    String   @default("pending") // pending|paid|canceled
+  zoomJoin  String?
+  zoomStart String?
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  bookingId String?
+  enrollmentId String?
+  provider  String
+  amount    Int
+  currency  String
+  status    String
+  raw       Json
+  createdAt DateTime @default(now())
+}
